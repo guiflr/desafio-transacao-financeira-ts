@@ -17,15 +17,17 @@ class CreateTransactionService {
 
   public execute({ title, value, type }: Request): Transaction {
     // TODO
+    const balance = this.transactionsRepository.getBalance();
+
+    if (type === 'outcome' && value > balance.total) {
+      throw new Error('Valor indisponível para saque');
+    }
+
     const transaction = this.transactionsRepository.create({
       title,
       value,
       type,
     });
-
-    const test = this.transactionsRepository.getBalance();
-
-    console.log('sdlksldsld', test);
 
     return transaction;
   }

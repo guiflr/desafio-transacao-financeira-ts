@@ -1,4 +1,3 @@
-import groupBy from 'lodash/groupBy';
 // eslint-disable-next-line import/newline-after-import
 import Transaction from '../models/Transaction';
 interface Balance {
