@@ -3,7 +3,7 @@ import { validate as isUuid } from 'uuid';
 import app from '../app';
 
 describe('Transaction', () => {
-  it('should be able to create a new transaction', async () => {
+  it.only('should be able to create a new transaction', async () => {
     const response = await request(app).post('/transactions').send({
       title: 'Loan',
       type: 'income',
