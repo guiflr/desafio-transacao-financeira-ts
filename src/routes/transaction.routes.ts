@@ -6,10 +6,6 @@ import CreateTransactionService from '../services/CreateTransactionService';
 const transactionRouter = Router();
 
 const transactionsRepository = new TransactionsRepository();
-const createTransactionService = new CreateTransactionService(
-  transactionsRepository,
-);
-
 transactionRouter.get('/', (request, response) => {
   try {
     // TODO
@@ -26,6 +22,10 @@ transactionRouter.post('/', (request, response) => {
   try {
     // TODO
     const { type, value, title } = request.body;
+
+    const createTransactionService = new CreateTransactionService(
+      transactionsRepository,
+    );
 
     const transaction = createTransactionService.execute({
       type,
